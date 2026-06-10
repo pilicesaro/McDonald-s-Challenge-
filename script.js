@@ -1204,6 +1204,7 @@ function goDelivery(){
   });
   document.getElementById('deliver-btn').classList.add('hidden');
 
+  // ── Desktop drag-and-drop ────────────────────────────────────
   document.querySelectorAll('.drag-card').forEach(el=>{
     el.addEventListener('dragstart',e=>{if(el.classList.contains('placed')){e.preventDefault();return;}dragItem=el.dataset.item;el.classList.add('dragging');e.dataTransfer.effectAllowed='move';});
     el.addEventListener('dragend',()=>el.classList.remove('dragging'));
@@ -1218,6 +1219,51 @@ function goDelivery(){
       slots[sn]=true;document.getElementById('drag-'+dragItem).classList.add('placed');
       slot.classList.add('filled');slot.innerHTML=`<span class="slot-icon">${slotIconSVG(dragItem)}</span>`;
       playClick();dragItem=null;checkTray(slots,dsp);
+    });
+  });
+
+  // ── Touch drag-and-drop (móvil) ──────────────────────────────
+  let touchGhost=null;
+  document.querySelectorAll('.drag-card').forEach(el=>{
+    el.addEventListener('touchstart',e=>{
+      if(el.classList.contains('placed'))return;
+      dragItem=el.dataset.item;
+      el.classList.add('dragging');
+      // Create ghost element
+      touchGhost=el.cloneNode(true);
+      touchGhost.style.cssText='position:fixed;z-index:9999;opacity:.75;pointer-events:none;transform:scale(1.08);transition:none;';
+      document.body.appendChild(touchGhost);
+      const t=e.touches[0];
+      touchGhost.style.left=(t.clientX-el.offsetWidth/2)+'px';
+      touchGhost.style.top=(t.clientY-el.offsetHeight/2)+'px';
+    },{passive:true});
+    el.addEventListener('touchmove',e=>{
+      if(!touchGhost)return;
+      e.preventDefault();
+      const t=e.touches[0];
+      touchGhost.style.left=(t.clientX-touchGhost.offsetWidth/2)+'px';
+      touchGhost.style.top=(t.clientY-touchGhost.offsetHeight/2)+'px';
+      // Highlight slot under finger
+      document.querySelectorAll('.tray-slot').forEach(s=>{
+        const r=s.getBoundingClientRect();
+        s.classList.toggle('drag-over',t.clientX>=r.left&&t.clientX<=r.right&&t.clientY>=r.top&&t.clientY<=r.bottom);
+      });
+    },{passive:false});
+    el.addEventListener('touchend',e=>{
+      el.classList.remove('dragging');
+      if(touchGhost){touchGhost.remove();touchGhost=null;}
+      document.querySelectorAll('.tray-slot').forEach(s=>s.classList.remove('drag-over'));
+      if(!dragItem)return;
+      const t=e.changedTouches[0];
+      const slot=document.elementFromPoint(t.clientX,t.clientY)?.closest('.tray-slot');
+      if(slot){
+        const sn=slot.dataset.slot;
+        if(slots[sn]){toast('Slot ocupado','warning');dragItem=null;return;}
+        slots[sn]=true;document.getElementById('drag-'+dragItem).classList.add('placed');
+        slot.classList.add('filled');slot.innerHTML=`<span class="slot-icon">${slotIconSVG(dragItem)}</span>`;
+        playClick();checkTray(slots,dsp);
+      }
+      dragItem=null;
     });
   });
   document.querySelectorAll('.drag-card').forEach(el=>{
