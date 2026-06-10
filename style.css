@@ -1,7 +1,7 @@
-/* ═══════════════════════════════════════════════════════════════
-   McDONALD'S CHALLENGE — VISUAL OVERHAUL v5
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   McDONALD'S CHALLENGE â€” VISUAL OVERHAUL v5
    Dark arcade + McDonald's brand colors + neon effects
-═══════════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800;900&family=Nunito:wght@700;800;900&display=swap');
 
 :root {
@@ -55,7 +55,7 @@ body::before{
   opacity:.45;
 }
 
-/* ═══ SCREENS ════════════════════════════════════════════════ */
+/* â•â•â• SCREENS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .screen{
   position:fixed;inset:0;
   display:flex;flex-direction:column;
@@ -66,7 +66,7 @@ body::before{
 .screen.hidden{opacity:0;pointer-events:none;transform:scale(.96) translateY(12px);z-index:0;}
 .screen.active{opacity:1;pointer-events:all;transform:scale(1) translateY(0);z-index:10;}
 
-/* ═══ BUTTONS ════════════════════════════════════════════════ */
+/* â•â•â• BUTTONS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .btn-main{
   background:
     linear-gradient(180deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 36%),
@@ -122,7 +122,7 @@ kbd{
   padding:1px 7px;font-size:11px;font-family:monospace;color:#ccc;
 }
 
-/* ═══ CARD BASE ══════════════════════════════════════════════ */
+/* â•â•â• CARD BASE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .glass-card{
   background:linear-gradient(160deg,rgba(25,31,52,.9) 0%, rgba(14,18,33,.94) 100%);
   border:1.5px solid rgba(132,160,255,.22);
@@ -130,9 +130,9 @@ kbd{
   backdrop-filter:blur(22px);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   PANTALLA 0 — SELECCIÓN PERSONAJE
-═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   PANTALLA 0 â€” SELECCIÃ“N PERSONAJE
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .char-screen{
   background:
     radial-gradient(ellipse at 50% 0%,rgba(255,199,44,.25) 0%,transparent 50%),
@@ -218,9 +218,9 @@ kbd{
 .char-name{font-family:var(--font-d);font-size:20px;font-weight:900;color:#fff;}
 .char-role{font-size:11px;font-weight:800;color:rgba(255,199,44,.7);text-transform:uppercase;letter-spacing:.1em;}
 
-/* ═══════════════════════════════════════════════════════════════
-   PANTALLA 1 — BIENVENIDA
-═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   PANTALLA 1 â€” BIENVENIDA
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #screen-welcome{
   background:
     radial-gradient(ellipse at 50% -10%,rgba(89,200,255,.44) 0%,transparent 56%),
@@ -332,7 +332,7 @@ kbd{
 .q-client:nth-child(3){animation-delay:.6s;margin-left:-14px;}
 .q-client:nth-child(4){animation-delay:.9s;margin-left:-14px;}
 
-/* ═══ HUD ════════════════════════════════════════════════════ */
+/* â•â•â• HUD â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .hud{
   position:fixed;top:0;left:0;right:0;z-index:200;
   background:linear-gradient(90deg,#0B1223 0%,#111B32 50%,#0B1223 100%);
@@ -383,7 +383,7 @@ kbd{
 }
 .hud-rush-badge.hidden{display:none;}
 
-/* ═══ RUSH BANNER ════════════════════════════════════════════ */
+/* â•â•â• RUSH BANNER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .rush-banner{
   position:fixed;top:58px;left:0;right:0;z-index:190;
   background:linear-gradient(90deg,#8B0000,var(--red),#FF4422,var(--red),#8B0000);
@@ -398,7 +398,7 @@ kbd{
 @keyframes rush-bg{0%{background-position:0%}100%{background-position:300%}}
 .rush-banner.hidden{display:none;}
 
-/* ═══ COMBO OVERLAY ══════════════════════════════════════════ */
+/* â•â•â• COMBO OVERLAY â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .combo-overlay{
   position:fixed;inset:0;z-index:9999;
   background:radial-gradient(ellipse at center,rgba(255,199,44,.98) 0%,rgba(218,41,28,.95) 100%);
@@ -428,7 +428,7 @@ kbd{
 .combo-sparkles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .sparkle-piece{position:absolute;width:14px;height:14px;animation:sparkle-fall linear forwards;border-radius:50%;}
 
-/* ═══ MONEY FLOAT ════════════════════════════════════════════ */
+/* â•â•â• MONEY FLOAT â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #money-float-layer{position:fixed;inset:0;z-index:8000;pointer-events:none;}
 .money-float{
   position:absolute;color:#4ade80;font-size:26px;font-weight:900;
@@ -442,7 +442,7 @@ kbd{
   100%{opacity:0;transform:translateY(-130px) scale(1);}
 }
 
-/* ═══ GAME SCREEN BASE ════════════════════════════════════════ */
+/* â•â•â• GAME SCREEN BASE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .game-screen{
   padding-top:68px;
   background:
@@ -460,7 +460,7 @@ kbd{
   box-shadow:0 0 16px var(--yellow-glow);z-index:0;
 }
 
-/* ═══ STAGE HEADER ═══════════════════════════════════════════ */
+/* â•â•â• STAGE HEADER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .stage-hdr{
   width:100%;max-width:920px;padding:10px 16px;
   display:flex;align-items:center;gap:12px;
@@ -497,7 +497,7 @@ kbd{
 }
 .timer-txt{font-size:14px;font-weight:900;color:var(--yellow);font-family:var(--font-d);min-width:30px;text-shadow:0 0 8px var(--yellow-glow);}
 
-/* ═══ TOAST ══════════════════════════════════════════════════ */
+/* â•â•â• TOAST â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .toast{
   position:fixed;bottom:30px;left:50%;
   transform:translateX(-50%) translateY(0);
@@ -512,9 +512,9 @@ kbd{
 .toast.error  {border-color:var(--red);  color:#ff6b6b;box-shadow:0 0 16px var(--red-glow),0 8px 32px rgba(0,0,0,.6);}
 .toast.warning{border-color:var(--yellow);color:var(--yellow);box-shadow:0 0 16px var(--yellow-glow),0 8px 32px rgba(0,0,0,.6);}
 
-/* ═══════════════════════════════════════════════════════════════
-   ETAPA 1 — PEDIDO / MOSTRADOR
-═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   ETAPA 1 â€” PEDIDO / MOSTRADOR
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .counter-deco{position:absolute;bottom:0;left:0;right:0;height:130px;pointer-events:none;z-index:1;}
 .counter-wood{
   position:absolute;bottom:0;left:0;right:0;height:130px;
@@ -593,9 +593,9 @@ kbd{
   filter:drop-shadow(0 8px 24px rgba(0,0,0,.7));
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   ETAPAS COCINA — COMÚN
-═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   ETAPAS COCINA â€” COMÃšN
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .cooking-layout{
   display:flex;gap:36px;align-items:center;
   max-width:880px;width:100%;padding:0 24px;
@@ -653,9 +653,9 @@ kbd{
 .hint-lbl{font-size:12px;font-weight:700;color:rgba(255,255,255,.4);text-align:center;line-height:1.6;}
 .steam-wrap,.bubble-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 
-/* ═══════════════════════════════════════════════════════════════
-   ETAPA 4 — BEBIDA
-═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   ETAPA 4 â€” BEBIDA
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .drink-layout{
   display:flex;gap:32px;align-items:center;
   max-width:840px;width:100%;padding:0 24px;
@@ -674,9 +674,9 @@ kbd{
 }
 .drink-panel{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:230px;}
 
-/* ═══════════════════════════════════════════════════════════════
-   ETAPA 5 — HAMBURGUESA
-═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   ETAPA 5 â€” HAMBURGUESA
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .burger-layout{
   display:flex;gap:24px;align-items:flex-start;
   max-width:960px;width:100%;padding:0 16px;
@@ -794,9 +794,9 @@ kbd{
 }
 .ref-arr{color:var(--red);font-weight:900;margin:0 2px;}
 
-/* ═══════════════════════════════════════════════════════════════
-   ETAPA 6 — ENTREGA
-═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   ETAPA 6 â€” ENTREGA
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .delivery-layout{
   display:flex;gap:24px;align-items:center;
   max-width:920px;width:100%;padding:0 24px;
@@ -855,9 +855,9 @@ kbd{
 .tray-slot.filled .slot-hint{display:none;}
 .tray-slot .slot-icon{display:flex;align-items:center;justify-content:center;}
 
-/* ═══════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    RESUMEN
-═══════════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #screen-summary{
   background:
     radial-gradient(ellipse at 50% 30%,rgba(255,199,44,.15) 0%,transparent 60%),
@@ -884,9 +884,9 @@ kbd{
 .summary-score{font-family:var(--font-d);font-size:28px;font-weight:900;color:var(--yellow);text-shadow:0 0 16px var(--yellow-glow);}
 .summary-money{font-family:var(--font-d);font-size:20px;font-weight:900;color:#4ade80;text-shadow:0 0 12px rgba(74,222,128,.5);}
 
-/* ═══════════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PANTALLAS FINALES
-═══════════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #screen-win{
   background:
     radial-gradient(ellipse at 50% 20%,rgba(255,199,44,.4) 0%,transparent 55%),
@@ -946,7 +946,7 @@ kbd{
 .fireworks-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
 .firework-particle{position:absolute;width:8px;height:8px;border-radius:50%;animation:firework-burst .8s ease-out forwards;}
 
-/* ═══ MODAL / OVERLAY ════════════════════════════════════════ */
+/* â•â•â• MODAL / OVERLAY â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .overlay-modal{
   position:fixed;inset:0;background:rgba(0,0,0,.85);
   display:flex;align-items:center;justify-content:center;z-index:999;
@@ -972,7 +972,7 @@ kbd{
 .lb-pts{font-family:var(--font-d);font-weight:800;color:rgba(255,255,255,.4);}
 .lb-empty{color:rgba(255,255,255,.25);font-size:14px;font-weight:700;padding:20px 0;}
 
-/* ═══ KEYFRAMES ══════════════════════════════════════════════ */
+/* â•â•â• KEYFRAMES â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @keyframes bounceIn{0%{transform:scale(.3);opacity:0}50%{transform:scale(1.12)}80%{transform:scale(.96)}100%{transform:scale(1);opacity:1}}
 @keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
@@ -991,11 +991,11 @@ kbd{
 @keyframes firework-burst{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:var(--fx);opacity:0}}
 @keyframes glow-pulse{0%,100%{box-shadow:0 0 20px var(--yellow-glow)}50%{box-shadow:0 0 40px var(--yellow-glow),0 0 60px rgba(255,199,44,.3)}}
 
-/* ═══════════════════════════════════════════════════════════════
-   NUEVOS ESTILOS v5 — MODO SELECCIÓN + MILKSHAKE + PIZZA
-═══════════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   NUEVOS ESTILOS v5 â€” MODO SELECCIÃ“N + MILKSHAKE + PIZZA
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── CORRECCIÓN BADGE SELECCIONADO (centrado perfecto) ───────── */
+/* â”€â”€ CORRECCIÃ“N BADGE SELECCIONADO (centrado perfecto) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .char-selected-badge {
   position: absolute;
   top: 10px;
@@ -1025,7 +1025,7 @@ kbd{
   box-shadow: 0 0 0 3px rgba(46,219,130,.3), 0 16px 48px rgba(0,0,0,.6) !important;
 }
 
-/* ── PANTALLA SELECCIÓN DE MODO ──────────────────────────────── */
+/* â”€â”€ PANTALLA SELECCIÃ“N DE MODO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .mode-screen {
   background:
     radial-gradient(ellipse at 50% 0%, rgba(255,199,44,.2) 0%, transparent 50%),
@@ -1120,7 +1120,7 @@ kbd{
   box-shadow: 2px 3px 0 #000;
 }
 
-/* ── BEBIDA — SELECCIÓN (memoria) ────────────────────────────── */
+/* â”€â”€ BEBIDA â€” SELECCIÃ“N (memoria) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .drink-choice-panel {
   display: flex;
   flex-direction: column;
@@ -1178,7 +1178,7 @@ kbd{
   animation: shake .4s;
 }
 
-/* ── CALIFICACIÓN PAPA'S STYLE ───────────────────────────────── */
+/* â”€â”€ CALIFICACIÃ“N PAPA'S STYLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 #screen-stage-score {
   background:
     radial-gradient(ellipse at 50% 30%, rgba(255,199,44,.15) 0%, transparent 60%),
@@ -1232,7 +1232,7 @@ kbd{
   text-shadow: 0 0 16px var(--yellow-glow);
 }
 
-/* ── MILKSHAKE OPTIONS ───────────────────────────────────────── */
+/* â”€â”€ MILKSHAKE OPTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .ms-pill { background: linear-gradient(135deg,#7B5CF0,#4C2DAA); }
 .ms-memory-layout {
   display: flex;
@@ -1383,7 +1383,7 @@ kbd{
   text-align: center;
 }
 
-/* ── PIZZA ───────────────────────────────────────────────────── */
+/* â”€â”€ PIZZA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .pz-pill { background: linear-gradient(135deg, #E8610A, #AA3300); }
 .pz-choice-layout {
   display: flex;
@@ -1514,14 +1514,14 @@ kbd{
   color: var(--yellow);
 }
 
-/* ── MISC FIXES ──────────────────────────────────────────────── */
+/* â”€â”€ MISC FIXES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .wrong-answer { animation: shake .4s; }
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 
 /* Ensure stage-score-card animates in nicely */
 @keyframes popIn{0%{transform:scale(.7);opacity:0}80%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
 
-/* ── CUPÓN McDONALD'S ────────────────────────────────────────── */
+/* â”€â”€ CUPÃ“N McDONALD'S â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .coupon-wrap {
   margin: 18px 0 8px;
   animation: popIn .5s .3s both;
@@ -1676,7 +1676,7 @@ kbd{
 .coupon.tier-gold .coupon-pct  { color: #C89800; }
 .coupon.tier-gold .coupon-code { color: #C89800; background: rgba(200,152,0,.1); border-color: #C89800; }
 
-/* ── PANTALLA DE DIFICULTAD ──────────────────────────────────── */
+/* â”€â”€ PANTALLA DE DIFICULTAD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .diff-screen {
   background: linear-gradient(160deg,#1a0a00 0%,#2d1200 50%,#1a0800 100%);
 }
@@ -1685,7 +1685,7 @@ kbd{
   max-width: 860px;
 }
 
-/* Diff cards inherit .mode-card — add overrides */
+/* Diff cards inherit .mode-card â€” add overrides */
 .diff-card {
   cursor: pointer;
   position: relative;
@@ -1706,7 +1706,7 @@ kbd{
   transform: translateY(-8px);
 }
 .diff-card.selected::after {
-  content: '✓';
+  content: 'âœ“';
   position: absolute;
   top: 10px; right: 14px;
   font-size: 18px;
@@ -1749,4 +1749,433 @@ kbd{
   font-weight: 800;
   color: #FFC72C;
   white-space: nowrap;
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   RESPONSIVE â€” TODAS LAS PANTALLAS
+   Breakpoints: 768px (tablet), 480px (mÃ³vil), 360px (pequeÃ±o)
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+
+/* â”€â”€ BASE: overflow en screens para contenido alto en mÃ³vil â”€â”€ */
+.screen {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* â•â•â• TABLET  â‰¤ 768px â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media (max-width: 768px) {
+
+  /* HUD */
+  .hud {
+    flex-wrap: wrap;
+    padding: 4px 10px;
+    gap: 6px;
+  }
+  .hud-chip { padding: 2px 8px; }
+  .hud-lbl  { font-size: 8px; }
+  .hud-val  { font-size: 12px; }
+  .hud-prog-wrap { min-width: 60px; flex: 0 1 80px; }
+  .hud-money-chip, .hud-mult-chip, .hud-diff-chip { display: none; }
+  .hud-bar  { height: 8px; }
+
+  /* Screens con padding-top ajustado al HUD comprimido */
+  .game-screen { padding-top: 56px; }
+  .rush-banner { top: 50px; font-size: 14px; padding: 5px 0; }
+
+  /* Stage header */
+  .stage-hdr { padding: 7px 12px; gap: 8px; margin-bottom: 10px; }
+  .stage-title { font-size: clamp(15px,2.5vw,22px); }
+  .timer-bar { width: 100px; }
+
+  /* Welcome screen */
+  .wlc-panel { padding: 76px 16px 120px; gap: 10px; }
+  .wlc-logo-ring { width: 72px; height: 72px; }
+  .wlc-employee { display: none; }
+  .wlc-queue { display: none; }
+  .wlc-menuboard { display: none; }
+
+  /* Character select */
+  .char-panel { padding: 72px 16px 100px; gap: 12px; }
+  .char-cards-row { gap: 16px; }
+  .char-card { width: 160px; padding: 18px 14px 14px; }
+
+  /* Mode / Difficulty select */
+  .mode-panel, .diff-panel { padding: 28px 16px 24px; gap: 14px; }
+  .mode-cards-row { gap: 14px; }
+  .mode-card { width: 190px; padding: 20px 14px 16px; }
+  .diff-card { min-height: 200px; }
+
+  /* Order screen */
+  .order-layout { gap: 20px; padding: 0 12px; }
+  .ticket-col { min-width: 200px; max-width: 280px; }
+  .ticket-paper { padding: 12px 14px; }
+  .register-col { display: none; }
+  .speech-bubble { font-size: 12px; max-width: 180px; padding: 9px 12px; }
+
+  /* Cooking stages */
+  .cooking-layout { gap: 20px; padding: 0 12px; }
+  .cooking-panel { min-width: 260px; padding: 18px 20px; gap: 14px; }
+  .state-badge { font-size: 15px; padding: 8px 20px; min-width: 180px; }
+  .cook-bar { height: 30px; }
+  .appliance-wrap svg { width: 140px; height: auto; }
+
+  /* Drink */
+  .drink-layout { gap: 20px; padding: 0 12px; }
+  .drink-panel { min-width: 200px; gap: 12px; }
+  .fill-pct { font-size: 22px; }
+
+  /* Burger */
+  .burger-layout { gap: 16px; padding: 0 10px; }
+  .ing-grid { gap: 8px; padding: 12px; }
+  .ing-btn { min-height: 68px; padding: 8px 4px 6px; }
+  .burger-plate-wrap { width: 220px; height: 230px; }
+  .burger-stack { width: 130px; }
+  .stack-layer { width: 120px; }
+
+  /* Delivery */
+  .delivery-layout { gap: 16px; padding: 0 12px; }
+  .tray-slot { width: 80px; height: 70px; }
+  .drag-card { padding: 10px 14px; font-size: 13px; }
+  .drag-big-icon { width: 44px; height: 40px; }
+
+  /* End screens */
+  .win-card, .lose-card { padding: 24px 20px; }
+  .stage-score-card { padding: 24px 20px; }
+  .end-stats { padding: 14px 18px; gap: 10px; }
+  .stat-val { font-size: 20px; }
+  .coupon-pct { font-size: 30px; }
+
+  /* Modals */
+  .modal-box { padding: 24px 22px; }
+}
+
+/* â•â•â• MÃ“VIL  â‰¤ 480px â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media (max-width: 480px) {
+
+  /* HUD â€” fila Ãºnica super compacta */
+  .hud {
+    padding: 3px 8px;
+    gap: 4px;
+    justify-content: space-between;
+  }
+  .hud-logo { width: 28px; height: 28px; font-size: 13px; }
+  .hud-chip { padding: 2px 6px; border-radius: 7px; }
+  .hud-val  { font-size: 11px; }
+  .hud-lbl  { font-size: 7px; }
+  .hud-prog-wrap { flex: 1; min-width: 50px; max-width: 70px; }
+  .hud-bar  { height: 6px; }
+
+  .game-screen { padding-top: 50px; }
+  .rush-banner { top: 44px; font-size: 12px; letter-spacing: .15em; }
+
+  /* Stage header */
+  .stage-hdr {
+    flex-wrap: wrap;
+    padding: 5px 10px;
+    gap: 6px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+  }
+  .stage-title { font-size: 15px; flex: 1 0 100%; order: -1; }
+  .timer-bar { width: 80px; height: 8px; }
+  .timer-txt { font-size: 12px; }
+
+  /* Botones */
+  .btn-main { padding: 12px 24px; font-size: 14px; }
+  .btn-main.big { padding: 14px 32px; font-size: 16px; }
+  .btn-ghost { padding: 9px 18px; font-size: 13px; }
+
+  /* Welcome */
+  .wlc-panel { padding: 60px 12px 100px; gap: 8px; }
+  .wlc-logo-ring { width: 60px; height: 60px; }
+  .wlc-title { font-size: clamp(22px,7vw,36px); }
+  .wlc-ribbon { font-size: 12px; letter-spacing: .15em; padding: 5px 18px; }
+  .wlc-desc { font-size: 13px; max-width: 300px; }
+  .wlc-btns { gap: 8px; }
+
+  /* Character select */
+  .char-panel { padding: 58px 12px 90px; gap: 10px; }
+  .char-cards-row { gap: 12px; flex-wrap: nowrap; }
+  .char-card { width: 140px; padding: 14px 10px 12px; border-radius: 18px; }
+  .char-name { font-size: 16px; }
+
+  /* Mode / Difficulty */
+  .mode-panel, .diff-panel {
+    padding: 20px 12px 20px;
+    gap: 12px;
+    overflow-y: auto;
+  }
+  .mode-cards-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .mode-card {
+    width: 100%;
+    max-width: 320px;
+    flex-direction: row;
+    padding: 14px 16px;
+    gap: 14px;
+    border-radius: 14px;
+    min-height: 0;
+  }
+  .mode-icon { font-size: 32px; flex-shrink: 0; }
+  .mode-name { font-size: 15px; }
+  .mode-desc { font-size: 11px; text-align: left; }
+  .mode-tag  { align-self: flex-start; font-size: 9px; }
+  .diff-card {
+    flex-direction: row;
+    align-items: flex-start;
+    min-height: 0;
+    width: 100%;
+    max-width: 320px;
+  }
+  .diff-stats { margin-top: 2px; }
+  .diff-stats li { font-size: 10px; padding: 1px 0; }
+  .diff-footer-info { font-size: 12px; }
+
+  /* Order */
+  .order-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px;
+  }
+  .client-col { flex-direction: row; gap: 12px; align-items: flex-end; }
+  .client-figure svg { width: 90px; height: auto; }
+  .speech-bubble { font-size: 11px; max-width: 160px; padding: 8px 10px; }
+  .client-nameplate { font-size: 12px; padding: 3px 12px; }
+  .ticket-col { min-width: unset; width: 100%; max-width: 300px; }
+  .ticket-paper { padding: 10px 12px; }
+  .ticket-list li { font-size: 11px; }
+  .ticket-total { font-size: 12px; }
+
+  /* Cooking */
+  .cooking-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px;
+  }
+  .appliance-wrap { animation: none; }
+  .appliance-wrap svg { width: 110px; height: auto; }
+  .cooking-panel {
+    min-width: unset;
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .state-badge { font-size: 13px; padding: 7px 16px; min-width: unset; width: 100%; }
+  .cook-bar { height: 26px; }
+  .cook-bar-wrap { max-width: 100%; }
+  .hint-lbl { font-size: 11px; }
+
+  /* Drink */
+  .drink-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px;
+  }
+  .drink-panel { min-width: unset; width: 100%; max-width: 300px; }
+  .drink-options-grid { gap: 8px !important; }
+  .drink-option-btn { padding: 10px 8px !important; }
+  .fill-pct { font-size: 20px; }
+
+  /* Burger assembly */
+  .burger-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 0 8px;
+  }
+  .ing-grid {
+    grid-template-columns: repeat(3,1fr);
+    gap: 6px;
+    padding: 10px;
+    max-width: 100%;
+    width: 100%;
+  }
+  .ing-btn {
+    min-height: 60px;
+    padding: 6px 3px 5px;
+    border-radius: 10px;
+  }
+  .ing-svg-wrap { width: 52px; height: 24px; }
+  .ing-lbl { font-size: 9px; }
+  .burger-asm-col { width: 100%; max-width: 300px; padding: 14px 16px; gap: 10px; }
+  .burger-plate-wrap { width: 180px; height: 190px; }
+  .burger-stack { width: 110px; }
+  .stack-layer { width: 100px; }
+  .burger-order-ref, #burger-order-ref { font-size: 9px; max-width: 200px; }
+
+  /* Delivery */
+  .delivery-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+  }
+  .delivery-client-col { flex-direction: row; gap: 12px; align-items: flex-end; }
+  .delivery-client-fig svg { width: 80px; height: auto; }
+  .drag-col { width: 100%; max-width: 300px; flex-direction: row; flex-wrap: wrap; padding: 10px; gap: 8px; }
+  .drag-card { flex: 1; min-width: 80px; padding: 8px 10px; font-size: 12px; gap: 8px; }
+  .drag-big-icon { width: 36px; height: 32px; }
+  .tray-slots-wrap { gap: 4px; margin-top: -40px; }
+  .tray-slot { width: 68px; height: 60px; font-size: 9px; }
+
+  /* Stage score */
+  .stage-score-card {
+    padding: 18px 14px;
+    max-width: 100%;
+    width: 96%;
+    gap: 10px;
+  }
+  .stage-score-title { font-size: 17px; gap: 8px; }
+  .ss-label { flex: 0 0 72px; font-size: 11px; }
+  .ss-pct { flex: 0 0 34px; font-size: 12px; }
+  .stage-score-total { font-size: 20px; }
+
+  /* End screens */
+  .win-card, .lose-card {
+    padding: 18px 14px;
+    max-width: 100%;
+    width: 96%;
+    gap: 10px;
+  }
+  .end-title { font-size: clamp(20px,5.5vw,32px); }
+  .end-msg { font-size: 13px; }
+  .end-stats {
+    grid-template-columns: 1fr 1fr;
+    padding: 12px 12px;
+    gap: 8px;
+  }
+  .stat-val { font-size: 18px; }
+  .end-btns { gap: 8px; }
+  .end-btns .btn-main { font-size: 13px; padding: 11px 20px; }
+
+  /* Coupon */
+  .coupon { flex-direction: column; min-height: unset; }
+  .coupon::after { display: none; }
+  .coupon-left { flex-direction: row; gap: 10px; padding: 10px 14px; justify-content: flex-start; }
+  .coupon-arches { font-size: 26px; }
+  .coupon-center { padding: 10px 14px 8px; }
+  .coupon-pct { font-size: 28px; }
+  .coupon-right { width: 100%; flex-direction: row; justify-content: space-between; padding: 6px 14px 10px; }
+  .coupon-scissors { writing-mode: horizontal-tb; }
+
+  /* Modals */
+  .modal-box { padding: 20px 16px; min-width: unset; width: 92%; }
+  .modal-title { font-size: 19px; }
+  .lb-list li { font-size: 13px; }
+
+  /* Milkshake */
+  .ms-memory-layout { gap: 14px; }
+  .ms-flavor-grid, .ms-cup-grid {
+    grid-template-columns: repeat(2,1fr) !important;
+    gap: 8px !important;
+  }
+  .ms-option-btn { padding: 12px 8px !important; }
+  .ms-opt-icon { font-size: 28px !important; }
+  .ms-cup-layout { gap: 14px !important; }
+  .ms-fill-layout { gap: 14px !important; flex-direction: column !important; align-items: center !important; }
+  .ms-toppings-layout { gap: 12px !important; flex-direction: column !important; align-items: center !important; }
+  .ms-topping-grid { grid-template-columns: repeat(2,1fr) !important; gap: 6px !important; }
+  .ms-delivery-layout { flex-direction: column !important; align-items: center !important; gap: 12px !important; }
+
+  /* Pizza */
+  .pz-choice-layout { gap: 14px !important; flex-direction: column !important; align-items: center !important; }
+  .pz-dough-grid { grid-template-columns: repeat(2,1fr) !important; gap: 8px !important; }
+  .pz-toppings-layout { flex-direction: column !important; align-items: center !important; gap: 10px !important; }
+  .pz-pizza-display { flex-shrink: 0 !important; }
+  .pz-pizza-base { width: 140px !important; height: 140px !important; }
+  .pz-ing-grid { grid-template-columns: repeat(3,1fr) !important; gap: 6px !important; max-width: 100% !important; }
+  .pz-ing-btn { padding: 8px 4px !important; font-size: 10px !important; }
+  .pz-bake-layout { flex-direction: column !important; align-items: center !important; gap: 12px !important; }
+  .pz-delivery-layout { flex-direction: column !important; align-items: center !important; gap: 12px !important; }
+  .pz-cut-layout { gap: 10px !important; }
+  #pz-cut-canvas { width: 200px !important; height: 200px !important; }
+}
+
+/* â•â•â• MÃ“VIL PEQUEÃ‘O  â‰¤ 360px â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media (max-width: 360px) {
+
+  .hud { gap: 3px; padding: 2px 6px; }
+  .hud-chip { padding: 1px 5px; }
+  .hud-val { font-size: 10px; }
+
+  .char-card { width: 126px; padding: 12px 8px; }
+  .char-name { font-size: 14px; }
+
+  .mode-card, .diff-card { max-width: 290px; }
+  .mode-icon { font-size: 26px; }
+
+  .ing-grid { grid-template-columns: repeat(2,1fr); gap: 5px; }
+  .ing-btn { min-height: 52px; }
+  .ing-lbl { font-size: 8px; }
+
+  .burger-plate-wrap { width: 150px; height: 160px; }
+  .burger-stack { width: 90px; }
+  .stack-layer { width: 86px; }
+
+  .tray-slot { width: 58px; height: 52px; }
+
+  .btn-main { font-size: 13px; padding: 10px 18px; }
+  .btn-main.big { font-size: 14px; padding: 12px 24px; }
+
+  .ss-label { flex: 0 0 62px; font-size: 10px; }
+  .ss-pct { flex: 0 0 28px; font-size: 11px; }
+}
+
+/* â•â•â• LANDSCAPE MÃ“VIL â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 440px) {
+
+  .hud { padding: 2px 8px; }
+  .game-screen { padding-top: 42px; }
+
+  /* En landscape con pantalla baja, todo horizontal */
+  .cooking-layout { flex-direction: row !important; gap: 14px; }
+  .cooking-panel { min-width: unset; flex: 1; padding: 10px 14px; gap: 8px; }
+  .appliance-wrap svg { width: 90px; }
+  .state-badge { font-size: 12px; padding: 5px 12px; }
+  .cook-bar { height: 22px; }
+
+  .order-layout { flex-direction: row !important; gap: 14px; align-items: center; }
+  .client-col { flex-direction: column; }
+  .client-figure svg { width: 70px; }
+
+  .burger-layout { flex-direction: row !important; gap: 10px; }
+  .ing-grid { grid-template-columns: repeat(3,1fr); gap: 5px; padding: 8px; }
+  .ing-btn { min-height: 50px; }
+  .burger-plate-wrap { width: 150px; height: 160px; }
+
+  .drink-layout { flex-direction: row !important; gap: 14px; }
+
+  .wlc-panel { padding: 44px 12px 80px; }
+  .char-panel { padding: 44px 12px 70px; }
+
+  .mode-cards-row { flex-direction: row !important; }
+  .mode-card { width: 160px; }
+  .diff-card { width: 160px; min-height: unset; }
+
+  .delivery-layout { flex-direction: row !important; gap: 12px; }
+}
+
+/* â•â•â• TOUCH: remover efectos hover en mÃ³vil â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media (hover: none) {
+  .char-card:hover,
+  .mode-card:hover,
+  .diff-card:hover,
+  .ing-btn:hover,
+  .drag-card:hover,
+  .btn-main:hover,
+  .ms-option-btn:hover,
+  .pz-option-btn:hover,
+  .pz-ing-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .btn-main:hover::before { left: -100%; }
 }
