@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>McDonald's Challenge: Hora Pico</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ══ LAYERS GLOBALES ══ -->
+<div id="money-float-layer"></div>
+<div id="combo-overlay" class="combo-overlay hidden">
+  <div class="combo-inner">
+    <div class="combo-stars">★★★</div>
+    <div class="combo-title">COMBO PERFECTO</div>
+    <div class="combo-stars">★★★</div>
+    <div class="combo-sub">+500 pts · Bonificación especial</div>
+    <div class="combo-sparkles" id="combo-sparkles"></div>
+  </div>
+</div>
+<div id="rush-banner" class="rush-banner hidden">HORA PICO</div>
+<div id="leaderboard-overlay" class="overlay-modal hidden">
+  <div class="modal-box">
+    <h2 class="modal-title">Top Jugadores</h2>
+    <ol id="lb-list" class="lb-list"></ol>
+    <button class="btn-main" id="lb-close-btn">✕ Cerrar</button>
+  </div>
+</div>
+
+<!-- ══ SELECCIÓN DE PERSONAJE ══ -->
+<!-- ══ SELECCIÓN DE DIFICULTAD ══ -->
+<div id="screen-difficulty" class="screen active diff-screen">
+  <div class="mode-panel diff-panel">
+    <div class="wlc-logo-ring">
+      <svg viewBox="0 0 80 80" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="38" fill="#DA291C" stroke="#8B0000" stroke-width="2"/>
+        <text x="40" y="56" text-anchor="middle" font-size="44" font-weight="900" fill="#FFC72C" font-family="Arial Black,sans-serif">M</text>
+      </svg>
+    </div>
+    <h1 class="wlc-title">Elegí la Dificultad</h1>
+    <p class="mode-subtitle">¿Qué tan desafiante querés el turno?</p>
+    <div class="mode-cards-row" id="diff-cards-row">
+
+      <div class="mode-card diff-card" id="diff-easy" data-diff="easy">
+        <div class="mode-icon">😊</div>
+        <div class="mode-name">Fácil</div>
+        <div class="mode-desc">Tiempos generosos, sin memoria, referencia siempre visible. Ideal para aprender.</div>
+        <ul class="diff-stats">
+          <li>❤️ 5 vidas</li>
+          <li>👥 5 clientes</li>
+          <li>📋 Referencia siempre</li>
+          <li>⏱️ Tiempos amplios</li>
+        </ul>
+        <div class="mode-tag" style="background:#27AE60">PARA PROFES</div>
+      </div>
+
+      <div class="mode-card diff-card" id="diff-medium" data-diff="medium">
+        <div class="mode-icon">😤</div>
+        <div class="mode-name">Intermedio</div>
+        <div class="mode-desc">Dificultad balanceada. Bebida por memoria, hora pico activada.</div>
+        <ul class="diff-stats">
+          <li>❤️ 3 vidas</li>
+          <li>👥 5 clientes</li>
+          <li>🧠 Memoria desde c2</li>
+          <li>🌶️ Hora pico c4+</li>
+        </ul>
+        <div class="mode-tag" style="background:#E67E22">CLÁSICO</div>
+      </div>
+
+      <div class="mode-card diff-card" id="diff-hard" data-diff="hard">
+        <div class="mode-icon">🔥</div>
+        <div class="mode-name">Difícil</div>
+        <div class="mode-desc">Sin referencias, 7 clientes, hora pico desde el cliente 3. Solo para expertos.</div>
+        <ul class="diff-stats">
+          <li>❤️ 3 vidas</li>
+          <li>👥 7 clientes</li>
+          <li>🧠 Memoria total</li>
+          <li>💀 Error = derrota</li>
+        </ul>
+        <div class="mode-tag" style="background:#C0392B">EXPERTO</div>
+      </div>
+
+    </div>
+    <div class="diff-footer-info">
+      <span>Vidas: <strong id="diff-info-lives">—</strong></span>
+      <span>·</span>
+      <span>Clientes: <strong id="diff-info-clients">—</strong></span>
+    </div>
+    <button class="btn-main big" id="diff-start-btn" disabled>➡ Elegir Personaje</button>
+  </div>
+</div>
+
+<div id="screen-character" class="screen hidden char-screen">
+  <div class="char-bg-wall">
+    <div class="char-ceiling"></div>
+    <div class="char-floor"></div>
+  </div>
+  <div class="char-panel">
+    <div class="wlc-logo-ring" style="margin-bottom:4px">
+      <svg viewBox="0 0 34 26" width="34" height="26" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 26 L3 10 Q3 3 9 3 Q15 3 15 10 L15 26" fill="#DA291C"/>
+        <path d="M19 26 L19 10 Q19 3 25 3 Q31 3 31 10 L31 26" fill="#DA291C"/>
+      </svg>
+    </div>
+    <h1 class="wlc-title" style="font-size:clamp(20px,3.5vw,38px)">McDonald's Challenge</h1>
+    <p class="char-subtitle">Elegí tu personaje</p>
+    <div class="char-cards-row">
+      <div class="char-card" id="char-card-male" data-char="male">
+        <div class="char-selected-badge">✓ Seleccionado</div>
+        <div class="char-svg-wrap" id="char-male-svg"></div>
+        <div class="char-name">Carlos</div>
+        <div class="char-role">Empleado</div>
+      </div>
+      <div class="char-card" id="char-card-female" data-char="female">
+        <div class="char-selected-badge">✓ Seleccionada</div>
+        <div class="char-svg-wrap" id="char-female-svg"></div>
+        <div class="char-name">Valentina</div>
+        <div class="char-role">Empleada</div>
+      </div>
+    </div>
+    <button class="btn-main big" id="char-start-btn" disabled>⚡ Elegir Modo</button>
+  </div>
+</div>
+
+<!-- ══ SELECCIÓN DE MODO ══ -->
+<div id="screen-mode" class="screen hidden mode-screen">
+  <div class="mode-panel">
+    <div class="wlc-logo-ring"><svg viewBox="0 0 34 26" width="34" height="26" xmlns="http://www.w3.org/2000/svg"><path d="M3 26 L3 10 Q3 3 9 3 Q15 3 15 10 L15 26" fill="#DA291C"/><path d="M19 26 L19 10 Q19 3 25 3 Q31 3 31 10 L31 26" fill="#DA291C"/></svg></div>
+    <h1 class="wlc-title">Elegí tu Modo</h1>
+    <p class="mode-subtitle">Cada modo tiene mecánicas únicas</p>
+    <div class="mode-cards-row">
+      <div class="mode-card" id="mode-burger" data-mode="burger">
+        <div class="mode-icon">🍔</div>
+        <div class="mode-name">Hamburguesas</div>
+        <div class="mode-desc">Cocinás carne, freís papas, armás la burger y servís la bebida de memoria.</div>
+        <div class="mode-tag">CLÁSICO</div>
+      </div>
+      <div class="mode-card" id="mode-milkshake" data-mode="milkshake">
+        <div class="mode-icon">🥤</div>
+        <div class="mode-name">Milkshakes</div>
+        <div class="mode-desc">Recordás el sabor, elegís el vaso, agregás ingredientes y controlás el llenado.</div>
+        <div class="mode-tag">NUEVO</div>
+      </div>
+      <div class="mode-card" id="mode-pizza" data-mode="pizza">
+        <div class="mode-icon">🍕</div>
+        <div class="mode-name">Pizza</div>
+        <div class="mode-desc">Elegís la masa, agregás ingredientes en orden, horneás y cortás en el momento justo.</div>
+        <div class="mode-tag">NUEVO</div>
+      </div>
+    </div>
+    <button class="btn-main big" id="mode-start-btn" disabled>🚀 ¡Comenzar!</button>
+  </div>
+</div>
+
+<!-- ══ BIENVENIDA ══ -->
+<div id="screen-welcome" class="screen hidden">
+  <div class="wlc-wall">
+    <div class="wlc-ceiling"></div>
+    <div class="wlc-menuboard">
+      <span class="menu-txt">🍔 Clásica $850</span>
+      <span class="menu-txt">🍟 Papas $420</span>
+      <span class="menu-txt">🥤 Combo $1200</span>
+      <span class="menu-txt">🍦 McFlurry $650</span>
+      <span class="menu-txt">🌯 Wrap $980</span>
+    </div>
+    <div class="wlc-floor"></div>
+    <div class="wlc-counter"><div class="counter-edge"></div></div>
+  </div>
+  <div class="wlc-employee" id="wlc-employee-svg"></div>
+  <div class="wlc-queue" id="wlc-queue"></div>
+  <div class="wlc-panel">
+    <div class="wlc-logo-ring"><svg viewBox="0 0 34 26" width="34" height="26" xmlns="http://www.w3.org/2000/svg"><path d="M3 26 L3 10 Q3 3 9 3 Q15 3 15 10 L15 26" fill="#DA291C"/><path d="M19 26 L19 10 Q19 3 25 3 Q31 3 31 10 L31 26" fill="#DA291C"/></svg></div>
+    <h1 class="wlc-title">McDonald's Challenge</h1>
+    <div class="wlc-ribbon" id="wlc-mode-ribbon">HORA PICO</div>
+    <p class="wlc-desc">¡Bienvenido al turno más caótico!<br>Atendé clientes, cociná perfecto<br>y convertite en <strong>Empleado del Mes</strong>.</p>
+    <div class="wlc-btns">
+      <button class="btn-main big" id="start-btn">🚀 Comenzar Turno</button>
+      <button class="btn-ghost" id="welcome-lb-btn">🏆 Ver Ranking</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HUD ══ -->
+<div id="hud" class="hud hidden">
+  <div class="hud-logo"><svg viewBox="0 0 20 16" width="16" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M2 16 L2 5 Q2 1 5.5 1 Q9 1 9 5 L9 16" fill="#DA291C"/><path d="M11 16 L11 5 Q11 1 14.5 1 Q18 1 18 5 L18 16" fill="#DA291C"/></svg></div>
+  <div class="hud-chip"><span class="hud-lbl">Cliente</span><span id="hud-client" class="hud-val">1/5</span></div>
+  <div class="hud-chip"><span class="hud-lbl">Vidas</span><span id="hud-lives" class="hud-val"></span></div>
+  <div class="hud-chip hud-prog-wrap">
+    <span class="hud-lbl">Progreso</span>
+    <div class="hud-bar"><div id="hud-progress-fill" class="hud-bar-fill" style="width:0%"></div></div>
+  </div>
+  <div class="hud-chip hud-prog-wrap">
+    <span class="hud-lbl">Satisfacción</span>
+    <div class="hud-bar"><div id="hud-sat-fill" class="hud-bar-fill sat-fill" style="width:100%"></div></div>
+    <span id="hud-satisfaction" class="hud-val">100%</span>
+  </div>
+  <div class="hud-chip"><span class="hud-lbl">Puntos</span><span id="hud-score" class="hud-val hud-score">0</span></div>
+  <div class="hud-chip hud-money-chip"><span class="hud-lbl">Caja</span><span id="hud-money" class="hud-val hud-money-val">$0</span></div>
+  <div class="hud-chip hud-mult-chip"><span class="hud-lbl">Racha</span><span id="hud-mult" class="hud-val hud-mult-val">x1</span></div>
+  <div class="hud-chip hud-diff-chip"><span id="hud-diff" class="hud-val">😤 Intermedio</span></div>
+  <div id="hud-rush-badge" class="hud-rush-badge hidden">HORA PICO</div>
+  <button class="btn-pause" id="pause-btn" title="Pausa (Esc)">II</button>
+</div>
+
+<!-- ══ PAUSA ══ -->
+<div id="screen-pause" class="screen hidden pause-screen">
+  <div class="overlay-modal" style="position:relative;inset:auto;background:none">
+    <div class="modal-box">
+      <h2 class="modal-title">Pausa</h2>
+      <p style="font-weight:700;color:#6B4C3B">El restaurante espera...</p>
+      <button class="btn-main" id="resume-btn">Continuar</button>
+      <button class="btn-ghost" id="pause-lb-btn">Ranking</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MODO HAMBURGUESA
+══════════════════════════════════════════ -->
+
+<!-- ETAPA 1 — PEDIDO BURGER -->
+<div id="screen-order" class="screen hidden game-screen">
+  <div class="counter-deco"><div class="counter-wood"><div class="counter-edge"></div></div></div>
+  <div class="register-col" id="register-col"></div>
+  <div class="stage-hdr">
+    <span class="stage-pill">Etapa 1</span>
+    <h2 class="stage-title">Tomá el Pedido</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="order-timer-fill" class="timer-fill"></div></div>
+      <span id="order-timer-txt" class="timer-txt">6s</span>
+    </div>
+  </div>
+  <div class="order-layout">
+    <div class="client-col">
+      <div class="client-figure" id="client-svg-wrap"></div>
+      <div class="speech-bubble" id="speech-bubble">¡Hola!</div>
+      <div class="client-nameplate" id="customer-name">Cliente</div>
+      <div class="client-tag" id="customer-personality"></div>
+    </div>
+    <div class="ticket-col">
+      <div class="ticket-paper">
+        <div class="ticket-logo">McDONALD'S</div>
+        <div class="ticket-num">Pedido #<span id="ticket-num">001</span></div>
+        <div class="ticket-dash"></div>
+        <ul class="ticket-list" id="ticket-items"></ul>
+        <div class="ticket-dash"></div>
+        <div class="ticket-total" id="ticket-total">Total: $0</div>
+        <div class="ticket-msg">¡Gracias por su visita! McDonald's® Argentina</div>
+        <div class="ticket-barcode">||| |||| || ||||| |||| ||| ||</div>
+      </div>
+    </div>
+  </div>
+  <button class="btn-main big" id="order-ok-btn" style="position:relative;z-index:6;margin-top:12px">¡Entendido! — A cocinar</button>
+</div>
+
+<!-- ETAPA 2 — CARNE -->
+<div id="screen-meat" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill">Etapa 2</span>
+    <h2 class="stage-title">Cocinando la Carne</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="meat-timer-fill" class="timer-fill"></div></div>
+      <span id="meat-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="cooking-layout">
+    <div class="appliance-wrap" id="grill-wrap"></div>
+    <div class="steam-wrap" id="steam-wrap" style="position:absolute;pointer-events:none"></div>
+    <div class="cooking-panel">
+      <div class="state-badge" id="meat-state-label">Cruda</div>
+      <div class="cook-bar-wrap">
+        <div class="cook-bar">
+          <div class="z-raw"></div><div class="z-perfect"></div><div class="z-burnt"></div>
+          <div id="meat-indicator" class="cook-needle"></div>
+        </div>
+        <div class="zone-lbl"><span>Cruda</span><span>Perfecta</span><span>Quemada</span></div>
+      </div>
+      <button class="btn-main big" id="meat-btn">🍳 Retirar Carne</button>
+      <p class="hint-lbl">Pará en la zona verde · <kbd>Espacio</kbd></p>
+    </div>
+  </div>
+</div>
+
+<!-- ETAPA 3 — PAPAS -->
+<div id="screen-fries" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill">Etapa 3</span>
+    <h2 class="stage-title">Friendo las Papas</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="fries-timer-fill" class="timer-fill"></div></div>
+      <span id="fries-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="cooking-layout">
+    <div class="appliance-wrap" id="fryer-wrap"></div>
+    <div class="bubble-wrap" id="bubble-wrap" style="position:absolute;pointer-events:none"></div>
+    <div class="cooking-panel">
+      <div class="state-badge" id="fries-state-label">Crudas</div>
+      <div class="cook-bar-wrap">
+        <div class="cook-bar">
+          <div class="z-raw"></div><div class="z-perfect"></div><div class="z-burnt"></div>
+          <div id="fries-indicator" class="cook-needle"></div>
+        </div>
+        <div class="zone-lbl"><span>Crudas</span><span>Perfectas</span><span>Quemadas</span></div>
+      </div>
+      <button class="btn-main big" id="fries-btn">🍟 Retirar Papas</button>
+      <p class="hint-lbl">Pará en la zona verde · <kbd>Espacio</kbd></p>
+    </div>
+  </div>
+</div>
+
+<!-- ETAPA 4 — BEBIDA (MEMORIA) -->
+<div id="screen-drink" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill">Etapa 4</span>
+    <h2 class="stage-title">Servir la Bebida</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="drink-timer-fill" class="timer-fill"></div></div>
+      <span id="drink-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <!-- Sub-etapa A: Elegir bebida -->
+  <div id="drink-choice-panel" class="drink-choice-panel">
+    <div class="memory-hint" id="drink-memory-hint">
+      <span id="drink-hint-icon">🧠</span>
+      <span id="drink-hint-text">¿Qué bebida pidió el cliente?</span>
+    </div>
+    <div class="drink-options-grid" id="drink-options-grid"></div>
+  </div>
+  <!-- Sub-etapa B: Llenar el vaso -->
+  <div id="drink-fill-panel" class="drink-layout" style="display:none">
+    <div class="appliance-wrap" id="dispenser-wrap"></div>
+    <div class="cup-wrap">
+      <div class="drink-name-badge" id="drink-name-label">Coca-Cola</div>
+      <div id="cup-svg-wrap"></div>
+      <div class="fill-pct" id="fill-pct">0%</div>
+    </div>
+    <div class="drink-panel">
+      <div class="state-badge" id="drink-state-label">Mantené para llenar</div>
+      <button class="btn-main big wide" id="drink-btn">🚰 Mantener presionado</button>
+      <p class="hint-lbl">Soltá cerca de la línea roja · <kbd>Espacio</kbd></p>
+    </div>
+  </div>
+</div>
+
+<!-- ETAPA 5 — HAMBURGUESA -->
+<div id="screen-burger" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill">Etapa 5</span>
+    <h2 class="stage-title">Armá la Hamburguesa</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="burger-timer-fill" class="timer-fill"></div></div>
+      <span id="burger-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="burger-layout">
+    <div class="ing-grid" id="ingredients-pool"></div>
+    <div class="burger-asm-col">
+      <p class="asm-hint">Seleccioná en orden correcto</p>
+      <div class="burger-plate-wrap">
+        <svg class="plate-svg" width="240" height="58" viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="110" cy="50" rx="98" ry="8" fill="rgba(61,43,31,.18)"/>
+          <ellipse cx="110" cy="42" rx="100" ry="12" fill="#C8B89A"/>
+          <ellipse cx="110" cy="38" rx="100" ry="14" fill="#E8DCC8" stroke="#A89070" stroke-width="2"/>
+          <ellipse cx="110" cy="36" rx="94"  ry="11" fill="none" stroke="#C4B098" stroke-width="1.5"/>
+          <ellipse cx="110" cy="32" rx="82"  ry="10" fill="#F5EFE6"/>
+          <ellipse cx="80"  cy="26" rx="20"  ry="5" fill="rgba(255,255,255,.45)" transform="rotate(-12,80,26)"/>
+        </svg>
+        <div class="burger-stack" id="burger-stack"></div>
+      </div>
+      <div class="order-ref" id="burger-order-ref"></div>
+      <button class="btn-ghost" id="burger-undo-btn" style="margin-top:6px">↩ Deshacer último</button>
+    </div>
+  </div>
+</div>
+
+<!-- ETAPA 6 — ENTREGA BURGER -->
+<div id="screen-delivery" class="screen hidden game-screen">
+  <div class="counter-deco"><div class="counter-wood"><div class="counter-edge"></div></div></div>
+  <div class="stage-hdr">
+    <span class="stage-pill">Etapa 6</span>
+    <h2 class="stage-title">Entrega Express</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="delivery-timer-fill" class="timer-fill"></div></div>
+      <span id="delivery-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="delivery-layout">
+    <div class="delivery-client-col">
+      <div class="delivery-client-fig" id="delivery-client-svg"></div>
+      <div class="speech-bubble" id="delivery-speech">¿Dónde está mi pedido? 👀</div>
+    </div>
+    <div class="drag-col" id="delivery-pool">
+      <div class="drag-card" id="drag-burger" draggable="true" data-item="burger">
+        <span class="drag-big-icon"><svg viewBox="0 0 64 56" width="52" height="46" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="dbun" cx="50%" cy="30%" r="65%"><stop offset="0%" stop-color="#F5D478"/><stop offset="100%" stop-color="#B06808"/></radialGradient></defs><path d="M4 20 Q6 4 32 2 Q58 4 60 20 Z" fill="url(#dbun)" stroke="#8B5E00" stroke-width="1.5"/><ellipse cx="32" cy="38" rx="28" ry="7" fill="#8B3A00" stroke="#2C0A00" stroke-width="1.5"/><ellipse cx="32" cy="46" rx="29" ry="9" fill="url(#dbun)" stroke="#8B5E00" stroke-width="1.5"/></svg></span>
+        <span>Hamburguesa</span>
+      </div>
+      <div class="drag-card" id="drag-fries" draggable="true" data-item="fries">
+        <span class="drag-big-icon"><svg viewBox="0 0 56 56" width="48" height="48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="dfbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#DA291C"/><stop offset="100%" stop-color="#8B1010"/></linearGradient><linearGradient id="dfry" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFD84A"/><stop offset="100%" stop-color="#C89A10"/></linearGradient></defs><path d="M10 28 L14 56 L42 56 L46 28 Z" fill="url(#dfbg)" stroke="#6B0808" stroke-width="1.5"/><rect x="12" y="4" width="7" height="30" rx="3" fill="url(#dfry)"/><rect x="21" y="1" width="7" height="30" rx="3" fill="url(#dfry)"/><rect x="30" y="3" width="7" height="30" rx="3" fill="url(#dfry)"/></svg></span>
+        <span>Papas</span>
+      </div>
+      <div class="drag-card" id="drag-drink" draggable="true" data-item="drink">
+        <span class="drag-big-icon"><svg viewBox="0 0 50 64" width="44" height="56" xmlns="http://www.w3.org/2000/svg" id="drag-drink-svg"><defs><clipPath id="dcup"><path d="M8 10 L42 10 L36 62 L14 62 Z"/></clipPath><linearGradient id="dcol" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CC1A1A"/><stop offset="100%" stop-color="#660808"/></linearGradient></defs><rect x="0" y="22" width="50" height="50" fill="url(#dcol)" clip-path="url(#dcup)"/><path d="M8 10 L42 10 L36 62 L14 62 Z" fill="none" stroke="#2C1810" stroke-width="2.5"/><rect x="4" y="5" width="42" height="8" rx="4" fill="rgba(255,255,255,.15)" stroke="#2C1810" stroke-width="2"/><rect x="18" y="0" width="14" height="8" rx="4" fill="rgba(255,255,255,.2)" stroke="#2C1810" stroke-width="2"/></svg></span>
+        <span id="drag-drink-label">Bebida</span>
+      </div>
+    </div>
+    <div class="tray-col">
+      <svg width="340" height="140" viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="tray-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F5B800"/><stop offset="100%" stop-color="#D49800"/></linearGradient></defs>
+        <ellipse cx="170" cy="134" rx="158" ry="10" fill="rgba(61,43,31,.2)"/>
+        <rect x="4" y="18" width="332" height="108" rx="16" fill="#B87800" stroke="#3D2B1F" stroke-width="4"/>
+        <rect x="8" y="22" width="324" height="100" rx="14" fill="url(#tray-top)"/>
+        <line x1="120" y1="26" x2="120" y2="116" stroke="#B87800" stroke-width="2.5" opacity=".6"/>
+        <line x1="220" y1="26" x2="220" y2="116" stroke="#B87800" stroke-width="2.5" opacity=".6"/>
+        <text x="170" y="14" text-anchor="middle" font-size="10" fill="#7A4E28" font-weight="900" font-family="Georgia,serif" letter-spacing="2">McDONALD'S</text>
+      </svg>
+      <div class="tray-slots-wrap">
+        <div class="tray-slot" data-slot="burger" id="slot-burger"><span class="slot-hint">🍔 Burg.</span></div>
+        <div class="tray-slot" data-slot="fries"  id="slot-fries"><span class="slot-hint">🍟 Papas</span></div>
+        <div class="tray-slot" data-slot="drink"  id="slot-drink"><span class="slot-hint">🥤 Bebida</span></div>
+      </div>
+    </div>
+  </div>
+  <button class="btn-main big hidden" id="deliver-btn" style="margin-top:12px;position:relative;z-index:6">🛎️ Entregar Pedido</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MODO MILKSHAKE
+══════════════════════════════════════════ -->
+
+<!-- MS-1: Pedido Milkshake -->
+<div id="screen-ms-order" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill ms-pill">Etapa 1</span>
+    <h2 class="stage-title">Tomá el Pedido</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="ms-order-timer-fill" class="timer-fill"></div></div>
+      <span id="ms-order-timer-txt" class="timer-txt">6s</span>
+    </div>
+  </div>
+  <div class="order-layout">
+    <div class="client-col">
+      <div class="client-figure" id="ms-client-svg-wrap"></div>
+      <div class="speech-bubble" id="ms-speech-bubble">¡Hola!</div>
+      <div class="client-nameplate" id="ms-customer-name">Cliente</div>
+      <div class="client-tag" id="ms-customer-personality"></div>
+    </div>
+    <div class="ticket-col">
+      <div class="ticket-paper">
+        <div class="ticket-logo">McDONALD'S</div>
+        <div class="ticket-num">Pedido #<span id="ms-ticket-num">001</span></div>
+        <div class="ticket-dash"></div>
+        <ul class="ticket-list" id="ms-ticket-items"></ul>
+        <div class="ticket-dash"></div>
+        <div class="ticket-msg">¡MEMORIZÁ el sabor y los toppings!</div>
+        <div class="ticket-barcode">||| |||| || ||||| |||| ||| ||</div>
+      </div>
+    </div>
+  </div>
+  <button class="btn-main big" id="ms-order-ok-btn" style="position:relative;z-index:6;margin-top:12px">¡Entendido! — A preparar</button>
+</div>
+
+<!-- MS-2: Elegir sabor (memoria) -->
+<div id="screen-ms-flavor" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill ms-pill">Etapa 2</span>
+    <h2 class="stage-title">Elegí el Sabor</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="ms-flavor-timer-fill" class="timer-fill"></div></div>
+      <span id="ms-flavor-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="ms-memory-layout">
+    <div class="memory-question">
+      <div class="memory-brain">🧠</div>
+      <p class="memory-prompt">¿Qué sabor pidió el cliente?</p>
+    </div>
+    <div class="ms-flavor-grid" id="ms-flavor-grid"></div>
+  </div>
+</div>
+
+<!-- MS-3: Elegir vaso -->
+<div id="screen-ms-cup" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill ms-pill">Etapa 3</span>
+    <h2 class="stage-title">Elegí el Vaso Correcto</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="ms-cup-timer-fill" class="timer-fill"></div></div>
+      <span id="ms-cup-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="ms-cup-layout">
+    <div class="memory-question" style="margin-bottom:16px">
+      <div class="memory-brain">🥤</div>
+      <p class="memory-prompt" id="ms-cup-prompt">¿Cuál es el tamaño correcto?</p>
+    </div>
+    <div class="ms-cup-grid" id="ms-cup-grid"></div>
+  </div>
+</div>
+
+<!-- MS-4: Llenar el milkshake -->
+<div id="screen-ms-fill" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill ms-pill">Etapa 4</span>
+    <h2 class="stage-title">Llenando el Milkshake</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="ms-fill-timer-fill" class="timer-fill"></div></div>
+      <span id="ms-fill-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="ms-fill-layout">
+    <div id="ms-cup-display"></div>
+    <div class="drink-panel" style="flex:1">
+      <div class="state-badge" id="ms-fill-state">Mantené para llenar</div>
+      <div class="fill-pct" id="ms-fill-pct" style="font-size:32px;margin:8px 0">0%</div>
+      <button class="btn-main big wide" id="ms-fill-btn">🥤 Mantener presionado</button>
+      <p class="hint-lbl">Soltá cerca de la línea · <kbd>Espacio</kbd></p>
+    </div>
+  </div>
+</div>
+
+<!-- MS-5: Toppings -->
+<div id="screen-ms-toppings" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill ms-pill">Etapa 5</span>
+    <h2 class="stage-title">Agregá los Toppings</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="ms-toppings-timer-fill" class="timer-fill"></div></div>
+      <span id="ms-toppings-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="ms-toppings-layout">
+    <div class="ms-cup-preview" id="ms-toppings-cup"></div>
+    <div>
+      <div class="memory-question" style="margin-bottom:12px">
+        <div class="memory-brain">🍓</div>
+        <p class="memory-prompt" id="ms-toppings-prompt">Seleccioná los toppings del pedido</p>
+      </div>
+      <div class="ms-topping-grid" id="ms-topping-grid"></div>
+      <button class="btn-main" id="ms-toppings-ok-btn" style="margin-top:16px;width:100%">✓ Confirmar Toppings</button>
+    </div>
+  </div>
+</div>
+
+<!-- MS-6: Entrega Milkshake -->
+<div id="screen-ms-delivery" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill ms-pill">Etapa 6</span>
+    <h2 class="stage-title">¡Entregá el Milkshake!</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="ms-delivery-timer-fill" class="timer-fill"></div></div>
+      <span id="ms-delivery-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="ms-delivery-layout">
+    <div class="delivery-client-col">
+      <div class="delivery-client-fig" id="ms-delivery-client"></div>
+      <div class="speech-bubble" id="ms-delivery-speech">¿Dónde está mi milkshake? 🥤</div>
+    </div>
+    <div id="ms-delivery-shake-preview"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div class="ms-delivery-summary" id="ms-delivery-summary"></div>
+      <button class="btn-main big" id="ms-deliver-btn">🛎️ Entregar Milkshake</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MODO PIZZA
+══════════════════════════════════════════ -->
+
+<!-- PZ-1: Pedido Pizza -->
+<div id="screen-pz-order" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill pz-pill">Etapa 1</span>
+    <h2 class="stage-title">Tomá el Pedido</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="pz-order-timer-fill" class="timer-fill"></div></div>
+      <span id="pz-order-timer-txt" class="timer-txt">6s</span>
+    </div>
+  </div>
+  <div class="order-layout">
+    <div class="client-col">
+      <div class="client-figure" id="pz-client-svg-wrap"></div>
+      <div class="speech-bubble" id="pz-speech-bubble">¡Hola!</div>
+      <div class="client-nameplate" id="pz-customer-name">Cliente</div>
+      <div class="client-tag" id="pz-customer-personality"></div>
+    </div>
+    <div class="ticket-col">
+      <div class="ticket-paper">
+        <div class="ticket-logo">McDONALD'S</div>
+        <div class="ticket-num">Pedido #<span id="pz-ticket-num">001</span></div>
+        <div class="ticket-dash"></div>
+        <ul class="ticket-list" id="pz-ticket-items"></ul>
+        <div class="ticket-dash"></div>
+        <div class="ticket-msg">¡MEMORIZÁ los ingredientes!</div>
+        <div class="ticket-barcode">||| |||| || ||||| |||| ||| ||</div>
+      </div>
+    </div>
+  </div>
+  <button class="btn-main big" id="pz-order-ok-btn" style="position:relative;z-index:6;margin-top:12px">¡Entendido! — A preparar</button>
+</div>
+
+<!-- PZ-2: Masa -->
+<div id="screen-pz-dough" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill pz-pill">Etapa 2</span>
+    <h2 class="stage-title">Elegí la Masa</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="pz-dough-timer-fill" class="timer-fill"></div></div>
+      <span id="pz-dough-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="pz-choice-layout">
+    <div class="memory-question">
+      <div class="memory-brain">🍕</div>
+      <p class="memory-prompt" id="pz-dough-prompt">¿Qué tipo de masa pidió?</p>
+    </div>
+    <div class="pz-dough-grid" id="pz-dough-grid"></div>
+  </div>
+</div>
+
+<!-- PZ-3: Ingredientes pizza -->
+<div id="screen-pz-toppings" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill pz-pill">Etapa 3</span>
+    <h2 class="stage-title">Agregá los Ingredientes</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="pz-toppings-timer-fill" class="timer-fill"></div></div>
+      <span id="pz-toppings-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="pz-toppings-layout">
+    <div class="pz-pizza-display" id="pz-pizza-display">
+      <div class="pz-pizza-base" id="pz-pizza-base"></div>
+    </div>
+    <div>
+      <div class="order-ref" id="pz-order-ref" style="margin-bottom:12px"></div>
+      <div class="pz-ing-grid" id="pz-ing-grid"></div>
+      <button class="btn-ghost" id="pz-undo-btn" style="margin-top:8px;width:100%">↩ Deshacer último</button>
+    </div>
+  </div>
+</div>
+
+<!-- PZ-4: Hornear -->
+<div id="screen-pz-bake" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill pz-pill">Etapa 4</span>
+    <h2 class="stage-title">¡Horneando la Pizza!</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="pz-bake-timer-fill" class="timer-fill"></div></div>
+      <span id="pz-bake-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="cooking-layout">
+    <div class="appliance-wrap" id="oven-wrap"></div>
+    <div class="cooking-panel">
+      <div class="state-badge" id="pz-bake-state">Sin hornear</div>
+      <div class="cook-bar-wrap">
+        <div class="cook-bar">
+          <div class="z-raw"></div><div class="z-perfect"></div><div class="z-burnt"></div>
+          <div id="pz-bake-indicator" class="cook-needle"></div>
+        </div>
+        <div class="zone-lbl"><span>Cruda</span><span>Perfecta</span><span>Quemada</span></div>
+      </div>
+      <button class="btn-main big" id="pz-bake-btn">🍕 Sacar del Horno</button>
+      <p class="hint-lbl">Pará en la zona verde · <kbd>Espacio</kbd></p>
+    </div>
+  </div>
+</div>
+
+<!-- PZ-5: Cortar -->
+<div id="screen-pz-cut" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill pz-pill">Etapa 5</span>
+    <h2 class="stage-title">¡Cortá la Pizza!</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="pz-cut-timer-fill" class="timer-fill"></div></div>
+      <span id="pz-cut-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="pz-cut-layout">
+    <div class="pz-cut-hint">Hacé clic en la pizza para cortarla en los lugares marcados</div>
+    <div class="pz-pizza-cut-wrap" id="pz-pizza-cut-wrap">
+      <div class="pz-pizza-cut-base" id="pz-pizza-cut-base"></div>
+      <canvas id="pz-cut-canvas" width="260" height="260"></canvas>
+    </div>
+    <div class="pz-cut-info">
+      <span id="pz-cut-count">0</span> / <span id="pz-cut-target">6</span> cortes
+    </div>
+    <button class="btn-main" id="pz-cut-ok-btn" disabled>✓ Pizza Cortada</button>
+  </div>
+</div>
+
+<!-- PZ-6: Entrega Pizza -->
+<div id="screen-pz-delivery" class="screen hidden game-screen">
+  <div class="stage-hdr">
+    <span class="stage-pill pz-pill">Etapa 6</span>
+    <h2 class="stage-title">¡Entregá la Pizza!</h2>
+    <div class="timer-wrap">
+      <div class="timer-bar"><div id="pz-delivery-timer-fill" class="timer-fill"></div></div>
+      <span id="pz-delivery-timer-txt" class="timer-txt"></span>
+    </div>
+  </div>
+  <div class="ms-delivery-layout">
+    <div class="delivery-client-col">
+      <div class="delivery-client-fig" id="pz-delivery-client"></div>
+      <div class="speech-bubble" id="pz-delivery-speech">¿Dónde está mi pizza? 🍕</div>
+    </div>
+    <div id="pz-delivery-pizza-preview" style="display:flex;align-items:center;justify-content:center;font-size:80px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.5))">🍕</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div class="ms-delivery-summary" id="pz-delivery-summary"></div>
+      <button class="btn-main big" id="pz-deliver-btn">🛎️ Entregar Pizza</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CALIFICACIÓN PAPA'S STYLE ══ -->
+<div id="screen-stage-score" class="screen hidden">
+  <div class="stage-score-card glass-card">
+    <h2 class="stage-score-title" id="ss-title">¡Pedido Completado!</h2>
+    <div class="stage-scores-list" id="ss-list"></div>
+    <div class="stage-score-total" id="ss-total"></div>
+    <div class="stars-row" id="ss-stars" style="justify-content:center;margin:8px 0"></div>
+    <button class="btn-main big" id="ss-next-btn">➡ Siguiente cliente</button>
+  </div>
+</div>
+
+<!-- ══ VICTORIA ══ -->
+<div id="screen-win" class="screen hidden">
+  <div id="confetti-wrap" class="confetti-wrap"></div>
+  <div class="fireworks-wrap" id="fireworks-wrap"></div>
+  <div class="end-card glass-card win-card">
+    <div class="end-badge-wrap">
+      <div class="end-badge-icon"><svg viewBox="0 0 60 60" width="64" height="64" xmlns="http://www.w3.org/2000/svg"><path d="M10 8 L50 8 L42 36 Q30 46 18 36 Z" fill="#FFC72C" stroke="#C89800" stroke-width="2"/><rect x="24" y="36" width="12" height="10" fill="#C89800"/><rect x="16" y="46" width="28" height="6" rx="3" fill="#C89800"/><ellipse cx="8" cy="18" rx="8" ry="10" fill="#FFC72C" stroke="#C89800" stroke-width="2"/><ellipse cx="52" cy="18" rx="8" ry="10" fill="#FFC72C" stroke="#C89800" stroke-width="2"/><text x="30" y="26" text-anchor="middle" font-size="14" font-weight="900" fill="#8B5E00">1</text></svg></div>
+    </div>
+    <h1 class="end-title title-gold" id="win-title">EMPLEADO DEL MES</h1>
+    <p class="end-msg" id="win-msg">¡Superaste la hora pico!</p>
+    <div class="end-stats" id="win-stats"></div>
+    <div class="win-stars-total" id="win-stars-total"></div>
+    <div class="name-row">
+      <label>Tu nombre para el ranking:</label>
+      <input type="text" id="player-name" maxlength="16" placeholder="Ingresá tu nombre..."/>
+    </div>
+    <!-- CUPÓN McDONALD'S -->
+    <div class="coupon-wrap" id="coupon-wrap">
+      <div class="coupon" id="coupon">
+        <div class="coupon-left">
+          <div class="coupon-arches">M</div>
+          <div class="coupon-brand">McDonald's</div>
+        </div>
+        <div class="coupon-center">
+          <div class="coupon-pct" id="coupon-pct">20%</div>
+          <div class="coupon-off">DE DESCUENTO</div>
+          <div class="coupon-detail" id="coupon-detail">En tu próxima visita</div>
+          <div class="coupon-code" id="coupon-code">MCGAME-XXXX</div>
+          <div class="coupon-exp">Válido 30 días · Un uso por persona</div>
+        </div>
+        <div class="coupon-right">
+          <button class="coupon-copy-btn" id="coupon-copy-btn" title="Copiar código">📋</button>
+          <div class="coupon-scissors">✂ - - -</div>
+        </div>
+        <div class="coupon-holes">
+          <div class="coupon-hole"></div>
+          <div class="coupon-hole"></div>
+          <div class="coupon-hole"></div>
+          <div class="coupon-hole"></div>
+          <div class="coupon-hole"></div>
+        </div>
+      </div>
+      <p class="coupon-note">🎁 ¡Tu recompensa por completar el turno!</p>
+    </div>
+    <div class="end-btns">
+      <button class="btn-main big" id="save-score-btn">💾 Guardar Puntaje</button>
+      <button class="btn-main yellow" id="win-lb-btn">Ver Ranking</button>
+      <button class="btn-ghost" id="win-retry-btn">🔄 Jugar de nuevo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DERROTA ══ -->
+<div id="screen-lose" class="screen hidden">
+  <div class="end-card glass-card lose-card">
+    <div class="end-icon" style="animation:shake .6s .2s both"><svg viewBox="0 0 60 60" width="64" height="64" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="28" fill="#DA291C" stroke="#8B0E0E" stroke-width="3"/><line x1="18" y1="18" x2="42" y2="42" stroke="white" stroke-width="5" stroke-linecap="round"/><line x1="42" y1="18" x2="18" y2="42" stroke="white" stroke-width="5" stroke-linecap="round"/></svg></div>
+    <h1 class="end-title title-red">PEDIDO RECHAZADO</h1>
+    <p class="end-msg" id="lose-msg">No lograste mantener el nivel de servicio.</p>
+    <div class="end-stats" id="lose-stats"></div>
+    <div class="end-btns">
+      <button class="btn-main big" id="lose-retry-btn">🔄 Intentar nuevamente</button>
+      <button class="btn-main yellow" id="lose-lb-btn">Ver Ranking</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
